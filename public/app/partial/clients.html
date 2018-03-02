@@ -1,0 +1,95 @@
+<h1 class="page-header">Клієнти</h1>
+<div class="clearfix">
+
+	<div class="search-add-box clearfix">
+		<span class="search-label pull-left"> <strong>Шукати: </strong><input class="search-field" ng-model="searchField" /></span>
+		<a ui-sref="dash.addClient"><button class="add-button btn btn-primary pull-right">Додати</button></a>
+	</div>
+	
+	<div class="row">
+		<div class="table-view col-md-9">
+
+			<uib-accordion close-others="oneAtATime">
+			    <div uib-accordion-group class="panel-default" ng-repeat="client in clients | filter: searchField | orderBy: '-date'"> 
+				    <uib-accordion-heading>
+			        {{client.name}} ({{client.city}})
+			      	</uib-accordion-heading>
+
+			        <div class="clearfix">
+			        	<table class="table table-condensed pull-left" style="width: 50%">
+				        	<tbody>
+				        		<tr ng-show="client.name">
+				        			<td><strong>Назва компанії </strong></td>
+				        			<td>{{client.name}}</td>
+				        		</tr>
+				        		<tr ng-show="client.adress">
+				        			<td><strong>Адреса </strong></td>
+				        			<td>{{client.adress}}</td>
+				        		</tr>
+				        		<tr ng-show="client.city">
+				        			<td><strong>Місто/село</strong></td>
+				        			<td>{{client.city}}</td>
+				        		</tr>
+				        		<tr ng-show="client.region">
+				        			<td><strong>Область</strong></td>
+				        			<td>{{client.region}}</td>
+				        		</tr>
+				        		<tr ng-show="client.phone">
+				        			<td><strong>Телефон</strong></td>
+				        			<td>{{client.phone}}</td>
+				        		</tr>
+				        		<tr ng-show="client.fax">
+				        			<td><strong>Факс</strong></td>
+				        			<td>{{client.fax}}</td>
+				        		</tr>
+				        		<tr ng-show="client.email">
+				        			<td><strong>Email</strong></td>
+				        			<td>{{client.email}}</td>
+				        		</tr>
+				        		<tr ng-show="client.date">
+				        			<td><strong>Дата внесення </strong></td>
+				        			<td>{{client.date | date : 'dd/MM/yyyy'}}</td>
+				        		</tr>
+				        	</tbody>
+				        </table>
+
+				        <div class="pull-right">
+							<a ui-sref="dash.clientDetail({id: client._id})"><button class="btn btn-primary" style="margin: 10px">Відкрити</button></a>
+							<a ui-sref="dash.editClient({id: client._id})" style="margin: 10px"><button class="btn btn-warning">Редагувати</button> </a>
+							<button class="btn btn-danger" ng-click="delete(client._id)" style="margin: 10px">Видалити</button>
+						</div>
+			        </div>
+			        
+			        
+			        <div class="table-responsive" ng-show="client.contacts">
+ 						<table class="table table-condensed">
+  							<thead>
+  								<th>Ім'я</th>
+  								<th>Посада</th>
+  								<th>Телефон</th>
+  								<th>Телефон 2</th>
+  								<th>Email</th>
+  							</thead>
+  							<tbody>
+  								<tr ng-repeat="person in client.contacts">
+  									<td>{{person.name}}</td>
+  									<td>{{person.position}}</td>
+  									<td>{{person.phone}}</td>
+  									<td>{{person.phone2}}</td>
+  									<td>{{person.email}}</td>
+  								</tr>
+  							</tbody>
+						</table>
+					</div>
+			        
+					
+			    </div>
+			</uib-accordion>
+		</div>
+		<div class="notes col-md-3">
+			
+		</div>
+	</div>
+	
+	
+</div>

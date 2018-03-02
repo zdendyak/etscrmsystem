@@ -1,0 +1,62 @@
+<div class="page-header">
+    <h3>{{title}}</h3>
+</div>
+<div style="padding: 5px">
+     <a ui-sref="dash.clients" style="cursor:pointer"><button class="btn btn-info">Повернутись до списку клієнтів</button></a>
+</div>
+<div class="clearfix" style="padding-top: 15px">
+    <div class="alert alert-danger" role="alert" ng-show="error_message">
+        {{error_message}}
+    </div>
+    <form class="form-horizontal" ng-submit="saveClient(client)">
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Назва компанії</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.name" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Область</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.region">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Місто</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.city">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Адреса</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.adress">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Телефон</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Факс</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="clientName" ng-model="client.fax">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="clientName" class="col-md-3 control-label">Email</label>
+        <div class="col-md-6">
+          <input type="email" class="form-control" id="clientName" ng-model="client.email">
+        </div>
+      </div>
+   
+      
+      <div class="form-group" style="margin-top: 30px">
+        <div class="col-md-offset-3 col-md-6">
+          <button type="submit" class="btn btn-primary pull-right add-button" style="min-width:100px">Зберегти</button>
+        </div>
+      </div>
+    </form>
+</div>

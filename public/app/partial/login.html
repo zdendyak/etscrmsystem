@@ -1,0 +1,12 @@
+<form class="form-signin" ng-submit="login(user)">
+  <h2 class="form-signin-heading">Ввійти</h2>
+  <p class="alert alert-info" style="padding:5px 15px">або <a ui-sref="auth.register" class="alert-link">зареєструватися</a></p>
+  <div class="alert alert-danger" role="alert" ng-show="error_message">
+        {{error_message}}
+  </div>
+  <label for="username" class="sr-only">Логін</label>
+  <input type="text" id="username" ng-model="user.username" class="form-control" placeholder="Логін" required autofocus>
+  <label for="inputPassword" class="sr-only">Пароль</label>
+  <input type="password" id="inputPassword" ng-model="user.password" class="form-control" placeholder="Пароль" required>
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Ввійти</button>
+</form>

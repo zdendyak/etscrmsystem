@@ -1,0 +1,109 @@
+<h1 class="page-header">Рахунки</h1>
+<div class="clearfix">
+
+	<div class="search-add-box clearfix">
+		<span class="search-label pull-left"> <strong>Шукати: </strong><input class="search-field" ng-model="searchField" /></span>
+		<button class="add-button btn btn-primary pull-right" ng-click="showAddForm()">Додати</button>
+	</div>
+	
+	<div class="row">
+		<div class="table-view">
+			        
+	        <div class="table-responsive">
+					<table class="table table-condensed">
+						<thead>
+							<th>Номер</th>
+							<th>Дата</th>
+							<th>Клієнт</th>
+							<th>Сума</th>
+							<th>Файл</th>
+							<th>Статус</th>
+							<th>Менеджер</th>
+							<th></th>
+							<th></th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="doc in invoices | filter: searchField" ng-dblclick="openDoc(doc)">
+								<td>{{doc.number}}</td>
+								<td>{{doc.date | date:'dd/MM/yyyy'}}</td>
+								<td>{{doc.client.name}}</td>
+								<td>{{doc.sum}}</td>
+								<td><span ng-if="!doc.file" ngf-select="addFile(doc, $file)" style="cursor: pointer">Додати файл</span><span ng-if="doc.file"><a href="{{doc.file}}" target="_blank">Файл пропозиції</a><button class="close" ng-click="deleteFile(doc)"><span class="glyphicon glyphicon-remove-circle"></span></td>
+								<td>{{doc.status}}</td>
+								<td>{{doc.manager.firstName + ' ' + doc.manager.lastName}}</td>
+								<td><button class="close" ng-click="openDoc(doc)"><span class="glyphicon glyphicon-pencil"></span></button></td>
+								<td><button class="close" ng-click="deleteDoc(doc)"><span class="glyphicon glyphicon-remove"></span></button></td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+			        
+		</div>
+
+	</div>
+
+	<div class="modal fade" id="editModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Редагувати рахунок</h4>
+	      </div>
+	      <div class="modal-body clearfix">
+	        <form>
+	        	<div class="form-group clearfix">
+			        <label for="docNumber" class="col-md-3 control-label">Номер</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="docNumber" ng-model="editDoc.number" required>
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="docDate" class="col-md-3 control-label">Дата</label>
+			        <div class="col-md-8">
+			          <input type="date" class="form-control" id="docDate" ng-model="editDoc.date">
+			     
+			        </div>
+			    </div>
+			     <div class="form-group clearfix">
+			        <label for="docClient" class="col-md-3 control-label">Компанія</label>
+			        <div class="col-md-8">
+			          <select ng-model="editDoc.client._id" class="form-control" id="docClient" required>
+						<option ng-repeat="client in clients" value="{{client._id}}">{{client.name}}</option>
+					</select>
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="docSum" class="col-md-3 control-label">Сума</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="docSum" ng-model="editDoc.sum">
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="docStatus" class="col-md-3 control-label">Статус</label>
+			        <div class="col-md-8">
+			          <select ng-model="editDoc.status" class="form-control" id="docStatus">
+						<option ng-repeat="status in statuses" value="{{status}}">{{status}}</option>
+					</select>
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="docManager" class="col-md-3 control-label">Менеджер</label>
+			        <div class="col-md-8">
+			          <select ng-model="editDoc.manager._id" class="form-control" id="docManager" required>
+						<option ng-repeat="manager in managers" value="{{manager.id}}">{{manager.firstName + ' ' + manager.lastName}}</option>
+					</select>
+			        </div>
+			    </div>
+			   
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="saveDoc(editDoc)">Зберегти</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	
+</div>

@@ -1,0 +1,35 @@
+<h1 class="page-header">Співробітники</h1>
+<div class="clearfix">
+
+<div class="search-add-box clearfix">
+	<span class="search-label pull-left"> <strong>Шукати: </strong><input class="search-field" ng-model="searchField" /></span>
+</div>
+
+<div class="row">
+	<div class="table-view col-md-9">      
+        <div class="table-responsive">
+				<table class="table table-condensed">
+					<thead>
+						<th>Логін</th>
+						<th>ПІБ</th>
+						<th>Телефон</th>
+						<th>Телефон 2</th>
+						<th>Email</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="person in coworkers | filter: searchField">
+							<td>{{person.username}}</td>
+							<td>{{person.firstName + ' ' + person.lastName}}</td>
+							<td>{{person.phone}}</td>
+							<td>{{person.phone2}}</td>
+							<td>{{person.email}}</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+		        
+	</div>
+
+	<div class="chat col-md-3"></div>
+
+</div>

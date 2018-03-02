@@ -1,0 +1,97 @@
+<h1 class="page-header">Контакти</h1>
+<div class="clearfix">
+
+	<div class="search-add-box clearfix">
+		<span class="search-label pull-left"> <strong>Шукати: </strong><input class="search-field" ng-model="searchField" /></span>
+		<button class="add-button btn btn-primary pull-right" data-toggle="modal" data-target="#editContactModal" ng-click="showAddForm()">Додати</button>
+	</div>
+	
+	<div class="row">
+		<div class="table-view">
+			        
+	        <div class="table-responsive">
+					<table class="table table-condensed">
+						<thead>
+							<th>Ім'я</th>
+							<th>Компанія</th>
+							<th>Посада</th>
+							<th>Телефон</th>
+							<th>Телефон 2</th>
+							<th>Email</th>
+						</thead>
+						<tbody>
+							<tr ng-repeat="person in contacts | filter: searchField" ng-dblclick="openContact(person)">
+								<td>{{person.name}}</td>
+								<td>{{person.client.name}}</td>
+								<td>{{person.position}}</td>
+								<td>{{person.phone}}</td>
+								<td>{{person.phone2}}</td>
+								<td>{{person.email}}</td>
+							</tr>
+						</tbody>
+				</table>
+			</div>
+			        
+		</div>
+
+	</div>
+
+	<div class="modal fade" id="editContactModal" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title">Додати контакт</h4>
+	      </div>
+	      <div class="modal-body clearfix">
+	        <form>
+	        	<div class="form-group clearfix">
+			        <label for="contactName" class="col-md-3 control-label">Прізвище, ім'я</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="contactName" ng-model="newContact.name" required>
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="contactPosition" class="col-md-3 control-label">Посада</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="contactPosition" ng-model="newContact.position">
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="contactPhone" class="col-md-3 control-label">Телефон</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="contactPhone" ng-model="newContact.phone">
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="contactPhone2" class="col-md-3 control-label">Телефон 2</label>
+			        <div class="col-md-8">
+			          <input type="text" class="form-control" id="contactPhone2" ng-model="newContact.phone2">
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="contactEmail" class="col-md-3 control-label">Email</label>
+			        <div class="col-md-8">
+			          <input type="email" class="form-control" id="contactEmail" ng-model="newContact.email">
+			        </div>
+			    </div>
+			    <div class="form-group clearfix">
+			        <label for="contactClient" class="col-md-3 control-label">Компанія</label>
+			        <div class="col-md-8">
+			          <select ng-model="newContact.client._id" class="form-control" required>
+						<option ng-repeat="client in clients" value="{{client._id}}">{{client.name}}</option>
+					</select>
+			        </div>
+			    </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-primary" ng-click="saveContact(newContact)">Зберегти</button>
+	      </div>
+	    </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	
+	
+</div>

@@ -1,0 +1,69 @@
+<h1 class="page-header">Мій профіль</h1>
+
+<form class="form-horizontal" ng-submit="updatePhoto(file)">
+	<div class="form-group">
+		<label for="image" class="sr-only">Фото</label>
+		<div class="col-sm-3">
+			<img class="profile-img" ng-src={{user.photo}} width="150" height="150">
+		</div>
+		<div class="col-sm-3">
+			<input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+		    ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" 
+		    ngf-resize="{width: 100, height: 100}">
+		    <img ngf-src="file"
+			  ngf-background="file" 
+			  ngf-resize="{width: 150, height: 150, quality: 0.9}" 
+			  ngf-no-object-url="false" 
+			>
+		    <button type="submit" style="margin-top: 20px"><strong>Змінити фото</strong></button>
+		</div>
+	</div>
+</form>
+
+<form class="profile-form form-horizontal" ng-submit="update(user)" style="padding-top: 30px">
+	
+	<p style="text-align:center" class="text-warning">{{error_message}}</p>
+	<h4 style="margin-top:15px">Особисті дані:</h4>
+	<div class="form-group">
+		<label for="inputUsername" class="col-sm-3 control-label">Логін</label>
+		<div class="col-sm-6">
+			<span class="form-control">{{user.username}}</span>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label for="firstName" class="col-sm-3 control-label">Ім'я</label>
+		<div class="col-sm-6">
+			<input type="text" id="firstName" ng-model="user.firstName" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="lastName" class="col-sm-3 control-label">Прізвище</label>
+		<div class="col-sm-6">
+			<input type="text" id="lastName" ng-model="user.lastName" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="phone" class="col-sm-3 control-label">Телефон</label>
+		<div class="col-sm-6">
+			<input type="text" id="phone" ng-model="user.phone" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="phone2" class="col-sm-3 control-label">Телефон 2</label>
+		<div class="col-sm-6">
+			<input type="text" id="phone2" ng-model="user.phone2" class="form-control">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="email" class="col-sm-3 control-label">E-mail</label>
+		<div class="col-sm-6">
+			<input type="text" id="email" ng-model="user.email" class="form-control">
+		</div>
+	</div>
+	<div  class="form-group">
+		<div class="col-sm-6 col-sm-offset-3">
+		<input class="btn btn-primary pull-right" type="submit" value="Зберегти" />
+	</div>
+	
+</form>

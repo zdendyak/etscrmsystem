@@ -1,0 +1,60 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" ui-sref="dash.main">ETS CRM System</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li ui-sref-active="active" style="margin-right:30px;"><a ui-sref="dash.main">Головна</a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.profile">{{currentUser().username}}</a></li>
+          <li><a style="cursor:pointer" ng-click="logout()">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="row main-view">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <div class="user-image-box"><img ng-src="{{getPhoto()}}"></div>
+        <ul class="nav nav-sidebar">
+          <li ui-sref-active="active"><a ui-sref="dash.main">Головна <span class="sr-only">(current)</span></a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.clients">Клієнти</a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.contacts">Контакти</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li ui-sref-active="active"><a ui-sref="dash.offers">Пропозиції</a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.invoices">Рахунки</a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.contracts">Договори</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li ui-sref-active="active"><a ui-sref="dash.tascs">Завдання</a></li>
+          <li ui-sref-active="active"><a ui-sref="dash.coworkers">Співробітники</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+          <li ui-sref-active="active"><a ui-sref="dash.stats">Статистика</a></li>
+        </ul>
+      </div>
+
+      <div class="col-sm-9 col-md-10 main">
+               
+          <ui-view></ui-view>
+
+   
+      </div>
+
+  </div>
+            
+  <footer class="footer">
+    <p>&copy; 2016 Zdendyak</p>
+  </footer>
+
+</div>
+

@@ -1,0 +1,24 @@
+{
+  "name": "etscrmsystem",
+  "description": "Simple CRM System",
+  "main": "server.js",
+  "authors": [
+    "zdendyak"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "crm",
+    "mean"
+  ],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-bootstrap": "^2.0.1",
+    "jquery": "^3.1.0",
+    "bootstrap": "^3.3.7",
+    "ng-file-upload": "^12.2.5",
+    "angular-ui-notification": "^0.2.0"
+  }
+}
